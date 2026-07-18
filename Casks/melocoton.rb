@@ -1,6 +1,6 @@
 cask "melocoton" do
-  version "0.30.0"
-  sha256 "d05aa6fa7eac8f4163ac9ceb612399bbcc6f138eaac8cafb68513f1c19d5dd68"
+  version "0.31.0"
+  sha256 "26feb0fdd32214091d2f0b7c6a2e8375f47d4e2a9243177f8c44130ad6b5fd1a"
 
   url "https://github.com/ruaylabs/melocoton/releases/download/v#{version}/melocoton-#{version}.dmg"
   name "Melocoton"
@@ -25,5 +25,6 @@ cask "melocoton" do
 
   zap trash: [
     "~/Library/Application Support/app.melocoton.app",
+    "~/Library/Application Support/com.ruaylabs.melocoton",
   ]
 end
