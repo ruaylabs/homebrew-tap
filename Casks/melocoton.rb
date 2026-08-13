@@ -1,6 +1,6 @@
 cask "melocoton" do
-  version "0.31.0"
-  sha256 "26feb0fdd32214091d2f0b7c6a2e8375f47d4e2a9243177f8c44130ad6b5fd1a"
+  version "0.32.0"
+  sha256 "f34299f943f60e47833e4cfeff94c93c4efaff498ea01d4a9f3e9cf54bb2ac3f"
 
   url "https://github.com/ruaylabs/melocoton/releases/download/v#{version}/melocoton-#{version}.dmg"
   name "Melocoton"
@@ -15,13 +15,6 @@ cask "melocoton" do
   auto_updates false
 
   app "Melocoton.app"
-
-  # Not notarized by Apple — strip quarantine so Gatekeeper doesn't block first launch
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-cr", "#{appdir}/Melocoton.app"],
-                   sudo: false
-  end
 
   zap trash: [
     "~/Library/Application Support/app.melocoton.app",
