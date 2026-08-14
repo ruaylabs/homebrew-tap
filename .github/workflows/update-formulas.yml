@@ -1,0 +1,52 @@
+name: Update formulas
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-formulas
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out tap
+        uses: actions/checkout@v6
+
+      - name: Update from latest stable releases
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python3 scripts/update-formulas.py
+
+      - name: Commit updates
+        run: |
+          if git diff --quiet -- Casks Formula; then
+            echo "All formulas are current."
+            exit 0
+          fi
+
+          if git diff --unified=0 -- Casks Formula \
+            | grep -E '^[+-][^+-]' \
+            | grep -Ev '^[-+][[:space:]]+(version[[:space:]]+"[^"]+"|sha256([[:space:]]+(arm|intel):)?[[:space:]]+"[0-9a-f]{64}")$'; then
+            echo "Refusing to commit changes outside version and sha256 values."
+            exit 1
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          mapfile -d '' files < <(git diff --name-only -z -- Casks Formula)
+
+          for file in "${files[@]}"; do
+            formula="$(basename "$file" .rb)"
+            version="$(awk -F'"' '/^[[:space:]]*version "/ { print $2; exit }' "$file")"
+            git add -- "$file"
+            git commit -m "chore(${formula}): update to ${version}"
+          done
+
+          git push
