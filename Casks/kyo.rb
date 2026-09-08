@@ -1,8 +1,8 @@
 cask "kyo" do
   arch arm: "aarch64"
 
-  version "0.6.1"
-  sha256 arm:   "d674e7ac6ddd935d038dc7ce864c0f5d68327b0241b2be1d36a55da7d7eb4f34"
+  version "0.7.0"
+  sha256 arm:   "9b3c8ab22275059b995d104710e0453ddd00f19b9c50e5c25d4b0d6d78199737"
 
   url "https://github.com/ruaylabs/kyo/releases/download/v#{version}/kyo_#{version}_#{arch}.dmg"
   name "Kyo"
