@@ -19,13 +19,6 @@ cask "kyo" do
 
   app "kyo.app"
 
-  # Not notarized by Apple — strip quarantine so Gatekeeper doesn't block first launch
-  postflight do
-    system_command "/usr/bin/xattr",
-                    args: ["-cr", "#{appdir}/kyo.app"],
-                    sudo: false
-  end
-
   zap trash: [
     "~/Library/Application Support/kyo",
   ]
