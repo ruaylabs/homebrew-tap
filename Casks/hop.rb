@@ -18,10 +18,9 @@ cask "hop" do
   app "Hop.app"
 
   # Not notarized by Apple — strip quarantine so Gatekeeper doesn't block first launch
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-cr", "#{appdir}/Hop.app"],
-                   sudo: false
+  postflight_steps do
+    run "/usr/bin/xattr",
+        args: ["-cr", "{{appdir}}/Hop.app"]
   end
 
   zap trash: [
