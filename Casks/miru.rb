@@ -17,8 +17,8 @@ cask "miru" do
 
   app "Miru.app"
 
-  postflight do
-    system_command "/usr/bin/open",
-      args: ["-n", "-g", "-W", "#{appdir}/Miru.app", "--args", "--register-only"]
+  postflight_steps do
+    run "/usr/bin/open",
+        args: ["-n", "-g", "-W", "{{appdir}}/Miru.app", "--args", "--register-only"]
   end
 end
