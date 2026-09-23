@@ -16,9 +16,4 @@ cask "miru" do
   depends_on macos: :monterey
 
   app "Miru.app"
-
-  postflight_steps do
-    run "/usr/bin/pluginkit",
-        args: ["-a", "{{appdir}}/Miru.app/Contents/PlugIns/MiruPreview.appex"]
-  end
 end
