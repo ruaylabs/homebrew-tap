@@ -18,7 +18,7 @@ cask "miru" do
   app "Miru.app"
 
   postflight_steps do
-    run "/usr/bin/open",
-        args: ["-n", "-g", "-W", "{{appdir}}/Miru.app", "--args", "--register-only"]
+    run "/usr/bin/pluginkit",
+        args: ["-a", "{{appdir}}/Miru.app/Contents/PlugIns/MiruPreview.appex"]
   end
 end
