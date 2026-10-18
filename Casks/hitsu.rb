@@ -1,8 +1,8 @@
 cask "hitsu" do
   arch arm: "aarch64"
 
-  version "0.7.2"
-  sha256 arm:   "500da7e792fc3f4261a2a1ace3ea0e45d8d35d81cad8645dd304001909069188"
+  version "0.8.0"
+  sha256 arm:   "010c1c79c62f0f29e6c1dbdcf15cf66a11cdb5a653cab32fa60f98bf6b873c81"
 
   url "https://github.com/ruaylabs/hitsu/releases/download/v#{version}/Hitsu_#{version}_#{arch}.dmg"
   name "Hitsu"
