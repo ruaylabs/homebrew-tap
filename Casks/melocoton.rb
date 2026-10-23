@@ -1,6 +1,6 @@
 cask "melocoton" do
-  version "0.34.1"
-  sha256 "af497b18dd4d6da9c8cb69cb745f35496a06ddcbfb1189cc5e336d51a31eb6dd"
+  version "0.34.2"
+  sha256 "16dc3846f7af54a87b059d620df9416662dfb478e7b3df4566e11b2ca3599368"
 
   url "https://github.com/ruaylabs/melocoton/releases/download/v#{version}/melocoton-#{version}.dmg"
   name "Melocoton"
